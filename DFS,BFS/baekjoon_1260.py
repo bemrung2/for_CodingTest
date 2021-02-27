@@ -16,11 +16,13 @@ def dfs(v):
         if visited[i] == 0 and graph[v][i] == 1:
             dfs(i)
 
+from collections import deque
+
 def bfs(v):
-    queue = [v]
+    queue = deque([v])
     visited[v] = 0 # dfs 실행 시 방문처리 되어있기에 여기서 0으로 초기화
     while queue:
-        v = queue.pop(0)
+        v = queue.popleft()
         print(v, end=' ')
         for i in range(1, n+1):
             if visited[i] and graph[v][i] == 1:
