@@ -12,7 +12,7 @@ for _ in range(m):
 def dfs(v):
     visited[v] = 1
     print(v, end = ' ')
-    for i in range(n+1):
+    for i in range(1, n+1):
         if visited[i] == 0 and graph[v][i] == 1:
             dfs(i)
 
@@ -27,7 +27,7 @@ def bfs(v):
         for i in range(1, n+1):
             if visited[i] and graph[v][i] == 1:
                 queue.append(i)
-                visited[i] = 0
+                visited[i] = 0 # line 23과 마찬가지
 
 dfs(v)
 print()
