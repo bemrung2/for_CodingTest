@@ -8,7 +8,10 @@ print(queue)
 queue.append(2)
 print(queue)
 
-queue.append(3)
+queue.append([3,2])
+print(queue)
+
+queue.append((4,5))
 print(queue)
 
 queue.append(7)
@@ -33,3 +36,6 @@ print(queue)
 # 리스트 자료형으로 변경하고자 한다면
 a = list(queue)
 print(a)
+
+print(a[3][0])
+print(a[4][0])
