@@ -11,5 +11,7 @@ for i in range(n+1):
             if '3' in str(i) + str(j) + str(k):
                 count += 1
 
+
+
 print(count)
 
