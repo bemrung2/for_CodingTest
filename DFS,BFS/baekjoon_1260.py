@@ -1,37 +1,68 @@
 from collections import deque
 import sys
-
 n, m, v = map(int, sys.stdin.readline().rstrip().split())
 
-# graph = [list(map(int, list(sys.stdin.readline().rstrip().split()))) for _ in range(m)]
-graph = [[0] * (n+1) for _ in range(n+1)] # 한 칸씩 추가로 생성 (인덱스를 그대로 사용하기 위함) 
-for _ in range(m):
-    x, y = map(int, sys.stdin.readline().rstrip().split())
-    graph[x][y] = graph[y][x] = 1
+graph = [[0] * (n+1) for _ in range(n+1)]
+for i in range(m):
+    a, b = map(int, sys.stdin.readline().rstrip().split())
+    graph[a][b] = graph[b][a] = 1
 
 visited = [False] * (n+1)
+
 def dfs(v):
     visited[v] = True
-    print(v, end = ' ')
+    print(v, end= ' ')
     for i in range(1, n+1):
-        if (visited[i] == False) and (graph[v][i] == 1):
+        if visited[i] == False and graph[i][v] == 1:
             dfs(i)
-
-dfs(v)
 
 def bfs(v):
     queue = deque([v])
-    visited[v] = False  # 앞에서 True로 했기 때문에 bfs에서는 반대로 진행한다.
+    visited[v] = False
     while queue:
         v = queue.popleft()
-        print(v, end = ' ')
+        print(v, end=' ')
         for i in range(1, n+1):
-            if visited[i] == True and graph[v][i] ==1:
+            if visited[i] == True and graph[i][v] == 1:
                 queue.append(i)
                 visited[i] = False
 
+    
+dfs(v)
 print()
 bfs(v)
+
+# n, m, v = map(int, sys.stdin.readline().rstrip().split())
+
+# # graph = [list(map(int, list(sys.stdin.readline().rstrip().split()))) for _ in range(m)]
+# graph = [[0] * (n+1) for _ in range(n+1)] # 한 칸씩 추가로 생성 (인덱스를 그대로 사용하기 위함) 
+# for _ in range(m):
+#     x, y = map(int, sys.stdin.readline().rstrip().split())
+#     graph[x][y] = graph[y][x] = 1
+
+# visited = [False] * (n+1)
+# def dfs(v):
+#     visited[v] = True
+#     print(v, end = ' ')
+#     for i in range(1, n+1):
+#         if (visited[i] == False) and (graph[v][i] == 1):
+#             dfs(i)
+
+# dfs(v)
+
+# def bfs(v):
+#     queue = deque([v])
+#     visited[v] = False  # 앞에서 True로 했기 때문에 bfs에서는 반대로 진행한다.
+#     while queue:
+#         v = queue.popleft()
+#         print(v, end = ' ')
+#         for i in range(1, n+1):
+#             if visited[i] == True and graph[v][i] ==1:
+#                 queue.append(i)
+#                 visited[i] = False
+
+# print()
+# bfs(v)
 
 
 # from collections import deque
