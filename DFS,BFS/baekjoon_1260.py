@@ -1,19 +1,22 @@
 from collections import deque
 import sys
+
+# n : 노드 / m : 간선 / v : 시작노드
 n, m, v = map(int, sys.stdin.readline().rstrip().split())
 
+
 graph = [[0] * (n+1) for _ in range(n+1)]
-for i in range(m):
+
+for _ in range(m):
     a, b = map(int, sys.stdin.readline().rstrip().split())
     graph[a][b] = graph[b][a] = 1
 
 visited = [False] * (n+1)
-
 def dfs(v):
     visited[v] = True
     print(v, end= ' ')
     for i in range(1, n+1):
-        if visited[i] == False and graph[i][v] == 1:
+        if graph[v][i] == 1 and visited[i] == False:
             dfs(i)
 
 def bfs(v):
@@ -21,16 +24,53 @@ def bfs(v):
     visited[v] = False
     while queue:
         v = queue.popleft()
-        print(v, end=' ')
+        print(v, end= ' ')
         for i in range(1, n+1):
-            if visited[i] == True and graph[i][v] == 1:
+            if graph[v][i] == 1 and visited[i] == True:
                 queue.append(i)
                 visited[i] = False
 
-    
+
+        
+
 dfs(v)
 print()
 bfs(v)
+
+
+# from collections import deque
+# import sys
+# n, m, v = map(int, sys.stdin.readline().rstrip().split())
+
+# graph = [[0] * (n+1) for _ in range(n+1)]
+# for i in range(m):
+#     a, b = map(int, sys.stdin.readline().rstrip().split())
+#     graph[a][b] = graph[b][a] = 1
+
+# visited = [False] * (n+1)
+
+# def dfs(v):
+#     visited[v] = True
+#     print(v, end= ' ')
+#     for i in range(1, n+1):
+#         if visited[i] == False and graph[i][v] == 1:
+#             dfs(i)
+
+# def bfs(v):
+#     queue = deque([v])
+#     visited[v] = False
+#     while queue:
+#         v = queue.popleft()
+#         print(v, end=' ')
+#         for i in range(1, n+1):
+#             if visited[i] == True and graph[i][v] == 1:
+#                 queue.append(i)
+#                 visited[i] = False
+
+    
+# dfs(v)
+# print()
+# bfs(v)
 
 # n, m, v = map(int, sys.stdin.readline().rstrip().split())
 
