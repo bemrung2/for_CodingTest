@@ -4,7 +4,6 @@ sys.setrecursionlimit(10000) # 메모리초과 해결
 dx = [1, -1, 0, 0, 1, -1, -1, 1]
 dy = [0, 0, -1, 1, 1, 1, -1, -1]
 
-
 while True:
     w, h = map(int, sys.stdin.readline().split())
     if w == 0:
