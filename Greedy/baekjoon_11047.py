@@ -8,15 +8,22 @@ for i in range(n):
 
 ans = 0 
 
-# for i in range(n):
-#     if k > ai[n-1-i]:
-#         ans += (k // ai[n-1-i])
-#         k = k & ai[n-1-i]
-
-
 while k>0:
     if k // ai[n-1] > 0:
         ans += k // ai[n-1]
         k = k % ai[n-1]
     n -= 1
+
+
+# for i in range(n-1, -1, -1):
+#     if k == 0:
+#         break
+#     if ai[i] > k:
+#         continue
+#     ans += k // ai[i]
+#     k = k % ai[i]
+    
+
+
+
 print(ans)
