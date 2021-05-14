@@ -3,36 +3,81 @@ import sys
 
 n, m, v = map(int, sys.stdin.readline().rstrip().split())
 
-graph = [[0] * (n+1) for _ in range(n+1)]
+# 리스트는 비효율적. matrix로 접근해야 함
+# lst = []
+# for i in range(m):
+#     lst.append(list(map(int, sys.stdin.readline().rstrip().split())))
 
-for _ in range(m):
+lst = [[0] * (n+1) for _ in range(n+1)]
+
+for i in range(m):
     a, b = map(int, sys.stdin.readline().rstrip().split())
-    graph[a][b] = graph[b][a] = 1
+    lst[a][b] = lst[b][a] = 1
 
-visited = [False] * (n+1)
+# 방문 노드 
+visited = [0] * (n+1)
+
 def dfs(v):
-    visited[v] = True
+    visited[v] = 1
     print(v, end= ' ')
     for i in range(1, n+1):
-        if graph[v][i] == 1 and visited[i] == False:
+        if visited[i] == 0 and lst[v][i] == 1:
             dfs(i)
 
 def bfs(v):
     queue = deque([v])
-    visited[v] = False
-    while queue:
+    visited[v] = 0
+    while queue: # 더이상 방문할 노드가 없을 때까지
+        # print(queue)
         v = queue.popleft()
-        print(v, end= ' ')
+        print(v, end = ' ')
         for i in range(1, n+1):
-            if graph[v][i] == 1 and visited[i] == True:
+            if visited[i] == 1 and lst[v][i] == 1:
                 queue.append(i)
-                visited[i] = False
+                visited[i] = 0
 
 
 
 dfs(v)
 print()
 bfs(v)
+
+
+# from collections import deque
+# import sys
+
+# n, m, v = map(int, sys.stdin.readline().rstrip().split())
+
+# graph = [[0] * (n+1) for _ in range(n+1)]
+
+# for _ in range(m):
+#     a, b = map(int, sys.stdin.readline().rstrip().split())
+#     graph[a][b] = graph[b][a] = 1
+
+# visited = [False] * (n+1)
+# def dfs(v):
+#     visited[v] = True
+#     print(v, end= ' ')
+#     for i in range(1, n+1):
+#         if graph[v][i] == 1 and visited[i] == False:
+#             dfs(i)
+
+# def bfs(v):
+#     queue = deque([v])
+#     visited[v] = False
+#     while queue:
+#         v = queue.popleft()
+#         print(v, end= ' ')
+#         for i in range(1, n+1):
+#             if graph[v][i] == 1 and visited[i] == True:
+#                 queue.append(i)
+#                 visited[i] = False
+
+
+
+# dfs(v)
+# print()
+# bfs(v)
 
 
 # from collections import deque
