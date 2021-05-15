@@ -3,44 +3,99 @@ import sys
 
 n, m, v = map(int, sys.stdin.readline().rstrip().split())
 
-# 리스트는 비효율적. matrix로 접근해야 함
-# lst = []
-# for i in range(m):
-#     lst.append(list(map(int, sys.stdin.readline().rstrip().split())))
 
-lst = [[0] * (n+1) for _ in range(n+1)]
+# 행렬로 표현하기
+
+# index를 직관적으로 하기 위해 더미행 추가
+mat = [[0] * (n+1) for _ in range(n+1)]
 
 for i in range(m):
-    a, b = map(int, sys.stdin.readline().rstrip().split())
-    lst[a][b] = lst[b][a] = 1
+    x, y = map(int, sys.stdin.readline().rstrip().split())
+    mat[x][y] = mat[y][x] = 1
 
-# 방문 노드 
 visited = [0] * (n+1)
 
 def dfs(v):
     visited[v] = 1
-    print(v, end= ' ')
+    print(v, end = ' ')
     for i in range(1, n+1):
-        if visited[i] == 0 and lst[v][i] == 1:
+        if visited[i] == 0 and mat[v][i] == 1:
             dfs(i)
 
 def bfs(v):
     queue = deque([v])
     visited[v] = 0
-    while queue: # 더이상 방문할 노드가 없을 때까지
-        # print(queue)
+    while queue:
         v = queue.popleft()
         print(v, end = ' ')
-        for i in range(1, n+1):
-            if visited[i] == 1 and lst[v][i] == 1:
+        for i in range(n+1):
+            if visited[i] == 1 and mat[v][i] == 1:
                 queue.append(i)
                 visited[i] = 0
-
 
 
 dfs(v)
 print()
 bfs(v)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# from collections import deque
+# import sys
+
+# n, m, v = map(int, sys.stdin.readline().rstrip().split())
+
+# # 리스트는 비효율적. matrix로 접근해야 함
+# # lst = []
+# # for i in range(m):
+# #     lst.append(list(map(int, sys.stdin.readline().rstrip().split())))
+
+# lst = [[0] * (n+1) for _ in range(n+1)]
+
+# for i in range(m):
+#     a, b = map(int, sys.stdin.readline().rstrip().split())
+#     lst[a][b] = lst[b][a] = 1
+
+# # 방문 노드 
+# visited = [0] * (n+1)
+
+# def dfs(v):
+#     visited[v] = 1
+#     print(v, end= ' ')
+#     for i in range(1, n+1):
+#         if visited[i] == 0 and lst[v][i] == 1:
+#             dfs(i)
+
+# def bfs(v):
+#     queue = deque([v])
+#     visited[v] = 0
+#     while queue: # 더이상 방문할 노드가 없을 때까지
+#         # print(queue)
+#         v = queue.popleft()
+#         print(v, end = ' ')
+#         for i in range(1, n+1):
+#             if visited[i] == 1 and lst[v][i] == 1:
+#                 queue.append(i)
+#                 visited[i] = 0
+
+
+
+# dfs(v)
+# print()
+# bfs(v)
 
 
 # from collections import deque
