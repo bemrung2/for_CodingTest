@@ -1,5 +1,6 @@
 import sys
-sys.setrecursionlimit(10000)
+sys.setrecursionlimit(10**8)
+
 # t = int(sys.stdin.readline().rstrip())
 
 # m, n, k = map(int, sys.stdin.readline().rstrip().split())
