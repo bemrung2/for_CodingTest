@@ -28,7 +28,7 @@ for i, j in agen4:
 
 print(cnt)
 
-# 궁금증 
+# # 궁금증 
 # for i, j in agen:
 #     print(i,end='')
 #     print(j,end='')
