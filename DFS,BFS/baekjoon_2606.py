@@ -1,5 +1,6 @@
 import sys
 
+
 node = int(sys.stdin.readline().rstrip())
 rel = int(sys.stdin.readline().rstrip())
 # 인덱스 번호를 맞추기 위해 한 줄 추가
