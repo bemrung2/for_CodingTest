@@ -16,6 +16,8 @@ result += first_num*first_num_count
 result += second_num*(m-first_num_count)
 print(result)
 
+
+
 ### 단순하게 풀기
 
 # n, m, k = map(int, sys.stdin.readline().rstrip().split())
