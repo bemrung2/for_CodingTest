@@ -15,6 +15,7 @@ def dfs(x, y):
         if array[nx][ny] == 1:
             dfs(nx, ny)
 
+
 t = int(sys.stdin.readline().rstrip())
 
 for i in range(t):
