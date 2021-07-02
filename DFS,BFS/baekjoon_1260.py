@@ -1,4 +1,4 @@
-from collections import deque
+# from collections import deque
 import sys
 
 n, m, v = map(int, sys.stdin.readline().rstrip().split())
@@ -22,11 +22,13 @@ def dfs(v):
         if visited[i] == 0 and mat[v][i] == 1:
             dfs(i)
 
+
 def bfs(v):
-    queue = deque([v])
+    queue = [v]
     visited[v] = 0
     while queue:
-        v = queue.popleft()
+        v = queue[0]
+        queue.pop(0)
         print(v, end = ' ')
         for i in range(n+1):
             if visited[i] == 1 and mat[v][i] == 1:
@@ -37,9 +39,6 @@ def bfs(v):
 dfs(v)
 print()
 bfs(v)
-
-
-
 
 
 
