@@ -4,6 +4,7 @@ sys.setrecursionlimit(10**8)
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
 
+
 def dfs(x, y):
     array[x][y] = 0
     for i in range(len(dx)):
