@@ -32,7 +32,9 @@ for i in range(t):
                 dfs(i,j)
                 result += 1
     print(result)
+ 
 
+ 
 
 
 # import sys
