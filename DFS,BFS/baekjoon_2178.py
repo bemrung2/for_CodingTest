@@ -17,7 +17,7 @@ def bfs(x,y):
     # 큐가 빌 때까지 반복
     while queue:
         x, y = queue.popleft()
-        for i in range(4):
+        for i in range(len(dx)):
             nx = x + dx[i]
             ny = y + dy[i]
             # 공간 벗어난 경우 무시
