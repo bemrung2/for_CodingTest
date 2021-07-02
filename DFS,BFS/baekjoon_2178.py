@@ -16,6 +16,8 @@ def bfs(x,y):
     queue.append((x,y))
     # 큐가 빌 때까지 반복
     while queue:
+    # while len(queue) > 0: 도 가능
+        # print(queue) 확인을 위한 코드
         x, y = queue.popleft()
         for i in range(len(dx)):
             nx = x + dx[i]
